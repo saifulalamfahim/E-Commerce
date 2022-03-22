@@ -26,4 +26,6 @@ const router = () => {
 
 window.addEventListener('load', router);
 window.addEventListener('hashchange', router);
+window.addEventListener('hashchange', router);
+
 
