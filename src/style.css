@@ -65,7 +65,7 @@ flex: 0 1 30rem;
 margin: 1rem;
 margin-bottom: 0;
 height: 42rem;
-border-top: 0.2rem #fff solid;
+border-top: 0.2rem black solid;
 }
 .product {
     display: flex;
@@ -83,7 +83,7 @@ border-top: 0.2rem #fff solid;
 }
 .product-brand{
     font-size: 1.2rem;
-    color: #fff;
+    color: black;
 }
 .product-price{
     font-size: 2rem;
