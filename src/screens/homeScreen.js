@@ -1,10 +1,23 @@
-import data from '../data.js';
+// import data from '../data.js';
 
 
 
 const homeScreen ={
-    render: () =>{
-        const {products} = data;
+    render: async() =>{
+// take data from from frontand (data.js)
+        // const {products} = data;
+
+// take data from backend (localhost 5000)
+        const response = await fetch('http://localhost:5000/api/products', {
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+        });
+        if(!response || !response.ok) {
+            return `<div>Error in getting data</div>`;
+        };
+        const products = await response.json();
+
         return `
         <ul class="products">
         ${products.map( product => `
