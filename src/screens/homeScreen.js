@@ -1,5 +1,8 @@
 // import data from '../data.js';
 
+import axios from "axios";
+import Rating from '../components/Rating';
+
 
 
 const homeScreen ={
@@ -8,15 +11,16 @@ const homeScreen ={
         // const {products} = data;
 
 // take data from backend (localhost 5000)
-        const response = await fetch('http://localhost:5000/api/products', {
+        const response = await axios({
+            url: 'http://localhost:5000/api/products',
             headers: {
                 'Content-Type' : 'application/json',
             },
         });
-        if(!response || !response.ok) {
+        if(!response || response.statusText !== 'OK') {
             return `<div>Error in getting data</div>`;
         };
-        const products = await response.json();
+        const products = response.data;
 
         return `
         <ul class="products">
@@ -31,6 +35,12 @@ const homeScreen ={
                     ${product.name}
                     </a>
                 </div>
+                <div class="product-rating">
+                ${Rating.render({
+                    value: product.rating,
+                text: `${product.numReviws} reviews`,
+            })}
+                </div> 
                 <div class="product-brand">
                 ${product. brand}
                 </div>
@@ -46,5 +56,7 @@ const homeScreen ={
         `
     }
 }
+
+
 
 export default homeScreen;
