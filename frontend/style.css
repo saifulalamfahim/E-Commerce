@@ -32,6 +32,12 @@ button.primary{
 .fw{
     width: 100%;
 }
+.success{
+    color: green;
+}
+.error{
+    color: red;
+}
 .grid-container{
     display: grid;
     grid-template-areas: 'header' 'main' 'footer';
