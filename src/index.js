@@ -6,6 +6,7 @@ import { parseRequestUrl } from "./utils.js";
 
 import bar from './bar.js';
 import CartScreen from "./screens/CartScreen.js";
+import SignInScreen from "./screens/SignInScreen.js";
 
 bar();
 
@@ -16,6 +17,7 @@ const routes = {
     '/product/:id': ProductScreen,
     '/cart/:id': CartScreen,
     '/cart': CartScreen,
+    '/signin': SignInScreen,
 };
 
 
