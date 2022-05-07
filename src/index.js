@@ -8,6 +8,7 @@ import bar from './bar.js';
 import CartScreen from "./screens/CartScreen.js";
 import SignInScreen from "./screens/SignInScreen.js";
 import Header from "./components/Header.js";
+import RegisterScreen from "./screens/RegisterScreen.js";
 
 bar();
 
@@ -19,6 +20,7 @@ const routes = {
     '/cart/:id': CartScreen,
     '/cart': CartScreen,
     '/signin': SignInScreen,
+    '/register': RegisterScreen,
 };
 
 
