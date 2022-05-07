@@ -2,7 +2,7 @@ import Error404Screen from "./screens/Error404Screen.js";
 // import error404Screen from "./screens/Error404Screen.js";
 import homeScreen from "./screens/homeScreen.js";
 import ProductScreen from "./screens/ProductScreen.js";
-import { parseRequestUrl } from "./utils.js";
+import { hideloading, parseRequestUrl, showloading } from "./utils.js";
 
 import bar from './bar.js';
 import CartScreen from "./screens/CartScreen.js";
@@ -24,6 +24,7 @@ const routes = {
 
 
 const router = async () => {
+    showloading();
     const request = parseRequestUrl();
     const parseUrl = 
     (request.resource ? `/${request.resource}`: '/') +
@@ -36,6 +37,7 @@ const router = async () => {
     const main = document.getElementById('main-container');
     main.innerHTML = await screen.render();
     await screen.after_render();
+    hideloading();
 }
 
 window.addEventListener('load', router);

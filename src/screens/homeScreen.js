@@ -2,11 +2,13 @@
 
 import axios from "axios";
 import Rating from '../components/Rating';
+import { hideloading, showloading } from "../utils";
 
 
 
 const homeScreen ={
     render: async() =>{
+        showloading();
 // take data from from frontand (data.js)
         // const {products} = data;
 
@@ -17,6 +19,7 @@ const homeScreen ={
                 'Content-Type' : 'application/json',
             },
         });
+        hideloading();
         if(!response || response.statusText !== 'OK') {
             return `<div>Error in getting data</div>`;
         };
