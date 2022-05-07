@@ -9,6 +9,7 @@ import CartScreen from "./screens/CartScreen.js";
 import SignInScreen from "./screens/SignInScreen.js";
 import Header from "./components/Header.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
+import ProfileScreen from "./screens/ProfileScreen.js";
 
 bar();
 
@@ -21,6 +22,7 @@ const routes = {
     '/cart': CartScreen,
     '/signin': SignInScreen,
     '/register': RegisterScreen,
+    '/profile': ProfileScreen,
 };
 
 
@@ -38,7 +40,8 @@ const router = async () => {
     await Header.after_render();
     const main = document.getElementById('main-container');
     main.innerHTML = await screen.render();
-    await screen.after_render();
+    if (screen.after_render) await screen.after_render();
+    
     hideloading();
 }
 
