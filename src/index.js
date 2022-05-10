@@ -12,6 +12,7 @@ import RegisterScreen from "./screens/RegisterScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import ShippingScreen from "./screens/ShippingScreen.js";
 import PaymentScreen from "./screens/PaymentScreen.js";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
 
 bar();
 
@@ -27,6 +28,7 @@ const routes = {
     '/profile': ProfileScreen,
     '/shipping': ShippingScreen,
     '/payment': PaymentScreen,
+    '/placeorder': PlaceOrderScreen,
 };
 
 

@@ -8,8 +8,8 @@ const PaymentScreen = {
         .addEventListener('submit', async (e) => {
             e.preventDefault();
             const paymentMethod = document.querySelector(
-                'input [name="payment-method"]:checked'
-            );
+                'input[name="payment-method"]:checked'
+            ).value;
             setPayment({ paymentMethod });
             document.location.hash = '/placeorder';
         });
@@ -44,7 +44,7 @@ const PaymentScreen = {
                     <input type="radio"
                     name="payment-method"
                     id="stripe"
-                    value="stripe"
+                    value="Stripe"
                     />
                     <lable for="stripe">Stripe</lable>
                 </div>
