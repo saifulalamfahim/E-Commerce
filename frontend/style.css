@@ -316,6 +316,12 @@ border-top: 0.2rem black solid;
 .order .cart-list-container{
     padding: 0;
 }
+.order-info > div:first-child {
+margin-top: 0;
+}
+.order-info >div >div{
+    padding: 1rem;
+}
 .order-info{
     flex: 3 1 60rem;
 }
