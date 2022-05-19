@@ -1,8 +1,10 @@
-import { getCartItems, getPayment, getShipping} from "../localStorage";
+import { cleanCart, getCartItems, getPayment, getShipping} from "../localStorage";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { hideloading, showloading, showMessage } from "../utils";
+import { createOrder } from "../api";
 
 
-const convertCartToOrder1 = () => {
+const convertCartToOrder = () => {
  console.log("jak ei tuku hoileo aise");
       const orderItems = getCartItems();
     if (orderItems.length === 0) {
@@ -33,7 +35,20 @@ const convertCartToOrder1 = () => {
 };
 
 const PlaceOrderScreen = {
-    after_render: () => {},
+    after_render: async () => {
+        document.getElementById("placeorder-button").addEventListener('click', async () => {
+            const order = convertCartToOrder();
+            showloading();
+            const data = await createOrder(order);
+            hideloading();
+            if (data.error) {
+                showMessage(data.error);
+            } else {
+                cleanCart();
+                document.location.hash = `/order/${data.order._id}`;
+            }
+        });  
+    },
     render : () => {
         const {
                         orderItems,
@@ -44,7 +59,7 @@ const PlaceOrderScreen = {
                         taxPrice,
                         totalPrice,
                     } =
-  convertCartToOrder1();
+  convertCartToOrder();
         return `
         <div>
             ${CheckoutSteps.render({step1: true, step2: true, step3: true, step4: true,})}
@@ -96,7 +111,7 @@ const PlaceOrderScreen = {
                     <li><div>Tax</div><div>$${taxPrice}</div></li>
                     <li class="total"><div>Order Total</div><div>$${totalPrice}</div></li>
                     <li>
-                    <button class="primary fw"> Place Order </button>
+                    <button id="placeorder-button" class="primary fw"> Place Order </button>
         </div>
         </div>
         </div>
